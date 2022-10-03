@@ -1,3 +1,4 @@
+import { locale } from './locale';
 import { User } from './../models/Users';
 import { adminJsResources } from './resources/index';
 
@@ -47,7 +48,8 @@ export const adminJS = new AdminJS({
               hoverBg: '#151515',
           }
         }
-      }
+      }, 
+      locale:locale
 
 })
 
