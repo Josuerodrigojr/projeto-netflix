@@ -19,12 +19,12 @@ export interface Episode{
 export interface EpisodeCreationAttributes extends Optional <Episode, 'id' | 'videoUrl' | 'secondsLong'>{ }
 
 //Criando uma classe que irá pegar as configurações de Model, Category e CategoryCreationAttributes
-export interface EpisodeInstace extends Model <Episode, EpisodeCreationAttributes>, Episode { }
+export interface EpisodeInstance extends Model <Episode, EpisodeCreationAttributes>, Episode { }
 
 
 //O define vai criar o método dentro da minha aplicação, definindo o tipo de cada coluna.
 
-export const Episode = sequelize.define<EpisodeInstace, Episode>('Episode', {
+export const Episode = sequelize.define<EpisodeInstance, Episode>('Episode', {
     id: {
         allowNull: false,
         autoIncrement: true,

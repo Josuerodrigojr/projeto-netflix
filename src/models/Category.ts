@@ -13,11 +13,11 @@ export interface Category{
 export interface CategoryCreationAttributes extends Optional <Category, 'id'>{ }
 
 //Criando uma classe que irá pegar as configurações de Model, Category e CategoryCreationAttributes
-export interface CategoryInstace extends Model <Category, CategoryCreationAttributes>, Category { }
+export interface CategoryInstance extends Model <Category, CategoryCreationAttributes>, Category { }
 
 
 //O define vai criar o método dentro da minha aplicação, definindo o tipo de cada coluna.
-export const Category = sequelize.define<CategoryInstace, Category>('Category',{
+export const Category = sequelize.define<CategoryInstance, Category>('Category',{
             id:{
           allowNull: false,
           autoIncrement: true,
