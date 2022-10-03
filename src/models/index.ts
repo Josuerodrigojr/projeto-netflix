@@ -1,5 +1,20 @@
-import { Category } from "./Category";
+import { Category} from "./Category";
+
+import { Course } from "./Course"
+
+import {Episode} from './Episode'
+
+//Criando uma associação com várias tabelas, utilizamos os comandos hasMany para dizer que está saindo algum elemento de uma e indo para outra. E, o comando belongsTo, para refereciar o recebimento dessa coluna.
+
+Category.hasMany(Course)
+
+Course.belongsTo(Category)
+
+
+Course.hasMany(Episode)
+
+Episode.belongsTo(Course)
 
 export {
-    Category
+    Category, Course, Episode
 }

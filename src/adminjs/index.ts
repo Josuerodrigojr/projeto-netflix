@@ -27,7 +27,7 @@ export const adminJS = new AdminJS({
     //Customização das cores no adminJS.
     branding:{
         companyName: 'OneBitFlix',
-        logo: '/onebitflix.svg',
+        logo: '../../public/logoOnebitflix.jpg',
         theme: {
           colors: {
             primary100: '#ff0043',
