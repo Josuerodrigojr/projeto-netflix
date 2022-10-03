@@ -1,3 +1,4 @@
+import { User } from './../models/Users';
 import { adminJsResources } from './resources/index';
 
 
@@ -11,6 +12,7 @@ import AdminJSExpress from '@adminjs/express';
 //Acesso ao banco de dados com o backend
 import AdminJSSequelize from '@adminjs/sequelize';
 import { sequelize } from './../index';
+import bcrypt from 'bcrypt'
 
 //O sequelize para edição do banco de dados.
 
@@ -27,7 +29,7 @@ export const adminJS = new AdminJS({
     //Customização das cores no adminJS.
     branding:{
         companyName: 'OneBitFlix',
-        logo: '../../public/logoOnebitflix.jpg',
+        logo: '../../public/logoOnebitflix.svg',
         theme: {
           colors: {
             primary100: '#ff0043',
@@ -49,7 +51,23 @@ export const adminJS = new AdminJS({
 
 })
 
-//Controle das rotas no proprio ADMIN, construindo as rotas para o programador.
-export const adminJsRouter = AdminJSExpress.buildRouter(adminJS)
+//Controle das rotas no proprio ADMIN, construindo as rotas para o programador. 
+//Foi alterado o build para authenticate, para colocar que somente administradores podem entrar nessa rota
+export const adminJsRouter = AdminJSExpress.buildAuthenticatedRouter(adminJS, {
+  authenticate: async (email, password) =>{
+    const user = await User.findOne({where:{email}})
+
+    if(user && user.role === "admin"){
+      const matched = await bcrypt.compare(password, user.password)
+      if (matched){
+        return user
+      }
+    }
+    return false
+  }, cookiePassword: 'senha-de-cookie'
+}, null, {
+  resave: false,
+  saveUninitialized: false
+})
 
 
