@@ -1,6 +1,6 @@
 
 import uploadFileFeature from '@adminjs/upload'
-import {ResourceOptions} from 'adminjs'
+import {FeatureType, ResourceOptions} from 'adminjs'
 import path from 'path'
 
 
