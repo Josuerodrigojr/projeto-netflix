@@ -1,3 +1,6 @@
+import { Category } from './../models/Category';
+import { Episode } from './../models/Episode';
+import { Course } from './../models/Course';
 import { locale } from './locale';
 import { User } from './../models/Users';
 import { adminJsResources } from './resources/index';
@@ -49,7 +52,27 @@ export const adminJS = new AdminJS({
           }
         }
       }, 
-      locale:locale
+      //locale é o arquivo ts na mesma pasta e é responsável pela tradução do AdminJs.
+      locale:locale,
+      // O dashboar será responsável pela alteração da página inicial do Admin JS, dentro dela temos o metodo component, que vamos estilizar a página da home do AdminJS. O handler será chamado quando a tela for iniciada, nesse caso, estamos fazendo a contagem de cada método. Os elementos do handler estará disponiveis no Dashboard.ts
+      dashboard:{
+        component: AdminJS.bundle('./components/Dashboard'),
+        handler: async(req, res, context) =>{
+          const courses = await Course.count()
+          const episodes = await Episode.count()
+          const categories = await Category.count()
+          const standardUsers = await User.count({where:{role:'user'}})
+
+          res.json({
+            'Cursos': courses,
+            'Episódios': episodes,
+            'Categorias': categories,
+            'Usuários': standardUsers
+
+          })
+        }
+      }
+
 
 })
 
