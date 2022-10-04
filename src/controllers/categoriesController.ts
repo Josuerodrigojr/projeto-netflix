@@ -1,20 +1,24 @@
+import { categoryService } from './../services/categoryService';
 import {Request, Response} from 'express'
-import {Category} from '../models'
+
+import { getPaginationParams } from '../helpers/getPaginationParams';
 
 
 //Controlando o que queremos receberr do banco de dados e como deverá ser mostrado nas nossas rotas.
 export const categoriesController ={
-    index: async (req: Request, res:Response) =>{
-        try {const categories = await Category.findAll({
-            //Valores que queremos mostrar nas rotas
-            attributes: ['id', 'name', 'position'],
-            //Ordenação
-            order: [['position', 'ASC']]
-        })
+    index: async (req: Request, res: Response) => {
+       const [page, perPage] = getPaginationParams(req.query)
+		
+
+
+        try {
+            const paginatedCategories = await categoryService.findAllPaginated(page, perPage)
+            
+            return res.json(paginatedCategories)
 
         
 
-        return res.json(categories)}
+        }
         catch(err){
             if (err instanceof Error){
                 return res.status(400).json({message: err.message})
