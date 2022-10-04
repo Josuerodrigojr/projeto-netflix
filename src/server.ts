@@ -2,10 +2,14 @@ import { adminJS, adminJsRouter } from './adminjs/index';
 
 import { sequelize } from './index';
 import express from "express"
+import {router} from './routes'
 
 const app = express()
 // Para fazer com que tudo dentro de uma pasta seja arquivos estáticos
-app.use(express.static('public'))
+app.use(express.static('../public'))
+//Para que a apalicação utilize as rotas já definidas.
+
+app.use(router)
 
 
 //Como fariamos em um app.use, passamos o caminho e as rotas que iremos tormar.
