@@ -8,8 +8,9 @@ const router = express.Router()
 //Rotas da categoria
 router.get('/categories', categoriesController.index)
 router.get('/categories/:id', categoriesController.show)
-//Rotas dos cursos
+//Rotas dos cursos, devemos tomar cuidado de colocar os :id embaixo, para não serem confundidos na solicitaçõo
 router.get('/courses/featured', coursesController.featured)
+router.get('/courses/newest', coursesController.newest)
 router.get('/courses/:id', coursesController.show)
 
 

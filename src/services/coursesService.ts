@@ -35,5 +35,14 @@ export const courseService ={
         const randomFeaturedCourses = featuredCourses.sort(()=> 0.5 - Math.random())
         //Retornando somente 3 elementos do curso
         return randomFeaturedCourses.slice(0, 3)
+      }, 
+      getTopTenNewest: async()=>{
+        const courses = await Course.findAll({
+            //Limitando a 10
+            limit:10,
+            //Pegamos para ser ordenado pela criação de um curso na plataforma do AdminJs
+            order: [['created_at', 'DESC']]
+        })
+        return courses
       } 
 }
