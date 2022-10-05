@@ -15,7 +15,7 @@ Category.hasMany(Course, {as:'courses'})
 Course.belongsTo(Category)
 
 //---//
-Course.hasMany(Episode, {as:'episodies'})
+Course.hasMany(Episode, {as:'episodes'})
 
 Episode.belongsTo(Course)
 

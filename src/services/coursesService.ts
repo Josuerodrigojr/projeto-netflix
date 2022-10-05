@@ -6,7 +6,7 @@ export const courseService ={
         attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']], 
         include:{
             // Posso colocar o nome que dei no index do model
-            association: 'episodies',
+            association: 'episodes',
             attributes: [
               'id',
               'name',
@@ -23,4 +23,17 @@ export const courseService ={
     
         return courseWithEpisodes
       },
+      getRandomFeaturedCourses: async ()=>{
+        const featuredCourses = await Course.findAll({
+            attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
+            where:{
+                featured:true
+            }
+
+        })
+        //Ordenando para que a lista de cursos fique em uma posição aleatória tofas as vezes
+        const randomFeaturedCourses = featuredCourses.sort(()=> 0.5 - Math.random())
+        //Retornando somente 3 elementos do curso
+        return randomFeaturedCourses.slice(0, 3)
+      } 
 }
