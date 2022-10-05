@@ -1,4 +1,5 @@
-import { Category } from './../models/Category';
+import { Category } from './../models';
+
 export const categoryService ={
     findAllPaginated: async (page:number, perPage:number)=>{
         const offset = (page - 1) * perPage
@@ -19,5 +20,21 @@ export const categoryService ={
             perPage,
             total:count
         }
+    }, 
+    //Abaixo será buscado informações pelo id solicitado na controller. Include irá servir para que posa fazer alguma associação dentro, ou seja, a atribuição que fizemos no index dentro da model, estamos pegando a informaçõ dos cursos. Association será o nome da tabela que estamos chamando e novamente o attributes, que será as colunas que quero selecionar. 
+    findByIdWithCourses: async(id:string) =>{
+        const categoryWithCourses = await Category.findByPk(id, {
+            attributes: ['id', 'name'],
+            include: {
+                association: 'courses',
+                attributes: [
+                    'id',
+                    'name', 
+                    'synopsis', 
+                    ['thumbnail_url', 'thumbnailUrl']
+                ]
+            }
+        })
+        return categoryWithCourses
     }
 }
