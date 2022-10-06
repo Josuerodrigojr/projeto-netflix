@@ -1,5 +1,6 @@
 import { courseService } from './../services/coursesService';
 import {Request, Response} from 'express'
+import { getPaginationParams } from '../helpers/getPaginationParams';
 
 
 
@@ -39,6 +40,25 @@ export const coursesController ={
               return res.status(400).json({ message: err.message })
             }
           }
+    },
+    //Get /courses/search?name=
+
+    search: async(req:Request, res:Response) =>{
+        // pelo que conheço, o params são os parâmetro da URL do seu endpoint, enquanto o query, são os parâmetro enviados após o interrogação(?). Ou, o query é utilizado após a interrogação.
+        
+        const {name} = req.query
+        const [page, perPage] = getPaginationParams(req.query)
+        try{
+        if (typeof name!== 'string') throw new Error ('O nome não é uma string')
+        const courses= await courseService.findByname(name, page, perPage);
+        return res.json(courses)
+    } catch (err) {
+        if (err instanceof Error) {
+          return res.status(400).json({ message: err.message })
+        }
+      }   
+    
+    
     }
 
 }

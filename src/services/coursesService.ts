@@ -1,3 +1,5 @@
+import { Op } from 'sequelize'
+import { getPaginationParams } from '../helpers/getPaginationParams'
 import {Course} from '../models'
 
 export const courseService ={
@@ -44,5 +46,32 @@ export const courseService ={
             order: [['created_at', 'DESC']]
         })
         return courses
-      } 
+      },
+       findByname: async (name: string, page:number, perPage:number) =>{
+       
+        const offset = (page -1)*perPage
+
+        const {count, rows} = await Course.findAndCountAll({
+          attributes:[
+            'id',
+            'name',
+            'synopsis',
+            ['thumbnail_url', 'thumbnailUrl']
+          ],
+          where:{
+            //O op.iLike, irá ajudar na pesquisa no nosso operador, o ilike irá servir para que o usuário não precise se preocupar em maiuscula ou minuscula.
+            name: {
+              [Op.iLike]: `%${name}%`
+            }
+          }, 
+          limit: perPage,
+          offset
+        })
+        
+        return {courses:rows,
+          page,
+          perPage,
+          total: count
+        }
+       } 
 }
