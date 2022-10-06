@@ -1,3 +1,4 @@
+import { episodesController } from './controllers/episodesController';
 import { coursesController } from './controllers/coursesController';
 import { categoriesController } from './controllers/categoriesController';
 import express  from 'express';
@@ -14,6 +15,7 @@ router.get('/courses/newest', coursesController.newest)
 router.get('/courses/search', coursesController.search)
 router.get('/courses/:id', coursesController.show)
 
+router.get('/episodes/stream', episodesController.stream)
 
 
 
