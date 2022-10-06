@@ -2,6 +2,9 @@ import { sequelize } from './../index';
 import { Model, Optional, DataTypes } from "sequelize"
 import bcrypt from 'bcrypt'
 
+// Para criar um tipo para o callback da senha
+type CheckPasswordCallback = (err?:Error|undefined, isSame?:boolean)=> void
+
 //Aqui eu defino o que a tabela deve ter nas colunas
 //Adicionando no metodo role, que o usuario só pode ser administrador ou usuário
 export interface User{
@@ -19,7 +22,10 @@ export interface User{
 export interface UserCreationAttributes extends Optional <User, 'id'>{ }
 
 //Criando uma classe que irá pegar as configurações de Model, User e UserCreationAttributes
-export interface UserInstance extends Model <User, UserCreationAttributes>, User { }
+// Temos que colocar que a instncia irá receber a verificação da senha
+export interface UserInstance extends Model <User, UserCreationAttributes>, User { 
+  checkPassword: (password:string, callbackfn: CheckPasswordCallback) => void
+}
 
 
 //O define vai criar o método dentro da minha aplicação, definindo o tipo de cada coluna.
@@ -74,3 +80,14 @@ export const User = sequelize.define<UserInstance, User>('users', {
             }
           }
         }})
+//Utilizamos o prototype para podermos comparar as senhas em outras páginas
+        User.prototype.checkPassword = function (password:string, callbackfn:  CheckPasswordCallback){
+          //Iremos fazer a comparação das duas senahas
+          bcrypt.compare(password, this.password, (err, isSame)=>{
+            if(err){
+              callbackfn(err)
+            } else {
+              callbackfn(err,isSame)
+            }
+          })
+        }

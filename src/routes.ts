@@ -11,6 +11,7 @@ const router = express.Router()
 //Rotas do de usuário
 
 router.post('/auth/register', authController.register)
+router.post('/auth/login', authController.login)
 
 //Definindo as rotas que iremos utilizar 
 //Rotas da categoria
