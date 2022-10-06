@@ -1,3 +1,4 @@
+import { authController } from './controllers/authController';
 import { episodesController } from './controllers/episodesController';
 import { coursesController } from './controllers/coursesController';
 import { categoriesController } from './controllers/categoriesController';
@@ -5,6 +6,12 @@ import express  from 'express';
 
 
 const router = express.Router()
+
+
+//Rotas do de usuário
+
+router.post('/auth/register', authController.register)
+
 //Definindo as rotas que iremos utilizar 
 //Rotas da categoria
 router.get('/categories', categoriesController.index)
