@@ -9,5 +9,11 @@ export const jwtService = {
         return jwt.sign(payload, secret,{
             //ExpiresIn é que vai receber o tempo de validade da minha chave
             expiresIn: expiration})
+
+
+    },
+    //Agora temos que criar um comando para a verificação do token
+    verifyToken: (token: string, callbackfn: jwt.VerifyCallback) => {
+        jwt.verify(token, secret, callbackfn)
+      }
     }
-}
