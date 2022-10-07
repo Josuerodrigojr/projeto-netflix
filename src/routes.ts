@@ -1,3 +1,4 @@
+import { favoritesController } from './controllers/favoritesController';
 import { authController } from './controllers/authController';
 import { episodesController } from './controllers/episodesController';
 import { coursesController } from './controllers/coursesController';
@@ -35,7 +36,8 @@ router.get('/courses/search', ensureAuth, coursesController.search)
 router.get('/courses/:id', ensureAuth, coursesController.show)
 //Rota para os episodios na stream
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
-
+//Rota para os favoritos
+router.post('/favorites', ensureAuth, favoritesController.save)
 
 
 export {router}
