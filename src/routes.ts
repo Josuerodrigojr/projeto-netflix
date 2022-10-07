@@ -3,7 +3,7 @@ import { episodesController } from './controllers/episodesController';
 import { coursesController } from './controllers/coursesController';
 import { categoriesController } from './controllers/categoriesController';
 import express  from 'express';
-import { ensureAuth } from './middlewares/auth';
+import { ensureAuth, ensureAuthViaQuery } from './middlewares/auth';
 
 
 const router = express.Router()
@@ -34,7 +34,7 @@ router.get('/courses/search', ensureAuth, coursesController.search)
 //Rota para os cursos por id
 router.get('/courses/:id', ensureAuth, coursesController.show)
 //Rota para os episodios na stream
-router.get('/episodes/stream', episodesController.stream)
+router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
 
 
 
