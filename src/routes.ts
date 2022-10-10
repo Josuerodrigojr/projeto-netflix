@@ -37,6 +37,7 @@ router.get('/courses/:id', ensureAuth, coursesController.show)
 //Rota para os episodios na stream
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
 //Rota para os favoritos
+router.get('/favorites', ensureAuth, favoritesController.index)
 router.post('/favorites', ensureAuth, favoritesController.save)
 
 

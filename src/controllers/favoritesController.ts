@@ -6,6 +6,20 @@ import {Request, Response} from 'express'
 
 
 export const favoritesController = {
+    //Get/Favorites
+    index: async(req:AuthenticatedRequest, res:Response)=>{
+        const userId = req.user!.id
+
+        try{
+            const favorites = await favoriteService.findByUserId(userId)
+            return res.status(201).json(favorites)
+        } catch(err){
+            if (err instanceof Error) {
+                return res.status(400).json({ message: err.message })
+              }
+        }
+    },
+    
     // POST/favorite
     save: async (req:AuthenticatedRequest, res:Response) =>{
         //Isso significa que estamos chamando e armazenando o usuário direto do meu token autenticado.
