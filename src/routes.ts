@@ -43,5 +43,6 @@ router.post('/favorites', ensureAuth, favoritesController.save)
 router.delete('/favorites/:id', ensureAuth, favoritesController.delete)
 //Rota de like
 router.post('/likes', ensureAuth, likeController.save)
+router.delete('/likes/:id', ensureAuth, likeController.delete)
 
 export {router}
