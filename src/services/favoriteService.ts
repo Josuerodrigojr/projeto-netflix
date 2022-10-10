@@ -23,5 +23,14 @@ export const favoriteService ={
             userId
         })
         return favorite
+    },
+    delete: async(userId:number, courseId:number) =>{
+        const favorite = await Favorite.destroy({
+            where:{
+                userId,
+                courseId
+            }
+        })
+        return favorite
     }
 }
