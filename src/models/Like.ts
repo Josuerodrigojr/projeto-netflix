@@ -6,7 +6,7 @@ import { Model } from 'sequelize';
 
 
 
-export interface Favorite{
+export interface Like{
     userId:number
     courseId: number
 
@@ -16,15 +16,14 @@ export interface Favorite{
 //Nesse caso, não precisamos criar, já que não estamos criando nenhuma tabela, mas sim, referenciando dados de outra tabela. Mas precisamos incluir as instancias já estabelecidas, como colocamos abaixo
 
 //Criando uma classe que irá pegar as configurações de Model, Category e CategoryCreationAttributes
-export interface FavoriteInstance extends Model <Favorite>, Favorite {
-    course?: CourseInstance
-    user?: UserInstance
+export interface LikeInstance extends Model <Like>, Like {
+
  }
 
 
 //O define vai criar o método dentro da minha aplicação, definindo o tipo de cada coluna.
 
-export const Favorite = sequelize.define<FavoriteInstance, Favorite>('Favorite', {
+export const Like = sequelize.define<LikeInstance, Like>('Like', {
     userId: {
         allowNull: false,
         primaryKey: true,

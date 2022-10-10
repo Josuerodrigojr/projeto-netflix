@@ -1,3 +1,4 @@
+import { Like } from './Like';
 
 import { Category} from "./Category";
 
@@ -37,7 +38,13 @@ Favorite.belongsTo(User)
 
 User.belongsToMany(Course, {through: Favorite})
 
+// -- //
+
+
+Course.belongsToMany(User, {through: Like})
+User.belongsToMany(Course, {through: Like})
+
 
 export {
-    Category, Course, Episode, User, Favorite
+    Category, Course, Episode, User, Favorite, Like
 }

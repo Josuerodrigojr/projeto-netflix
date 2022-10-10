@@ -1,3 +1,4 @@
+import { likeController } from './controllers/likesController';
 import { favoritesController } from './controllers/favoritesController';
 import { authController } from './controllers/authController';
 import { episodesController } from './controllers/episodesController';
@@ -40,6 +41,7 @@ router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
 router.get('/favorites', ensureAuth, favoritesController.index)
 router.post('/favorites', ensureAuth, favoritesController.save)
 router.delete('/favorites/:id', ensureAuth, favoritesController.delete)
-
+//Rota de like
+router.post('/likes', ensureAuth, likeController.save)
 
 export {router}

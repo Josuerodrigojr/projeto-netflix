@@ -18,7 +18,7 @@ export const favoriteService ={
         courses: favorites.map(favorite => favorite.course)}
     },
     create: async (userId:number, courseId:number) =>{
-        const favorite = Favorite.create({
+        const favorite = await Favorite.create({
             courseId,
             userId
         })
