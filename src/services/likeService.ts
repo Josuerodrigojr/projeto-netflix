@@ -16,5 +16,16 @@ export const likeService = {
             }
         })
 
+    },
+    //A verificação abaixo é caso o curso que vá mostrar já tenha recebido o like ou não
+
+    isLiked: async (userId: number, courseId:number) =>{
+       const like = await Like.findOne({
+        where:{
+            userId,
+            courseId
+        }
+       })
+       return like !==null ? true: false 
     }
 }
