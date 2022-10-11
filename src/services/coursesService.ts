@@ -47,6 +47,33 @@ export const courseService ={
         })
         return courses
       },
+
+      //Retornando os 10 cursos mais populares.
+      getTopTenByLikes: async() => {
+        //Em vez de buscarmos um método já pré estabelecido, estamos construindo nosso próprio método, utilizando a linguagem SQL.
+        const result = await Course.sequelize?.query(
+          `SELECT
+        courses.id,
+        courses.name,
+        courses.synopsis,
+        courses.thumbnail_url as thumbnailUrl,
+        COUNT(users.id) AS likes
+      FROM courses
+        LEFT OUTER JOIN likes
+          ON courses.id = likes.course_id
+          INNER JOIN users
+            ON users.id = likes.user_id
+      GROUP BY courses.id
+      ORDER BY likes DESC
+      LIMIT 10;`
+          )
+          if (result) {
+            const [topTen] = result
+            return topTen
+          } else {
+            return null
+          }
+      },
        findByname: async (name: string, page:number, perPage:number) =>{
        
         const offset = (page -1)*perPage

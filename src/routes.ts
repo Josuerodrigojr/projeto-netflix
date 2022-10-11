@@ -33,9 +33,13 @@ router.get('/courses/featured', ensureAuth, coursesController.featured)
 router.get('/courses/newest', coursesController.newest)
 //Rota para procurar o curso
 router.get('/courses/search', ensureAuth, coursesController.search)
+//Rotas para os cursos com mais likes
+router.get('/courses/popular', ensureAuth, coursesController.popular)
 //Rota para os cursos por id
 router.get('/courses/:id', ensureAuth, coursesController.show)
+
 //Rota para os episodios na stream
+
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
 //Rota para os favoritos
 router.get('/favorites', ensureAuth, favoritesController.index)
