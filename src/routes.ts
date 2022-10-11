@@ -49,4 +49,9 @@ router.delete('/favorites/:id', ensureAuth, favoritesController.delete)
 router.post('/likes', ensureAuth, likeController.save)
 router.delete('/likes/:id', ensureAuth, likeController.delete)
 
+// Rotas para o tempo do video
+router.get('/episodes/:id/watchTime', ensureAuth, episodesController.getWatchTime)
+router.post('/episodes/:id/watchTime', ensureAuth, episodesController.setWatchTime)
+
+
 export {router}

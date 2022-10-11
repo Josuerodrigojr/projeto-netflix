@@ -1,3 +1,4 @@
+
 import { Like } from './Like';
 
 import { Category} from "./Category";
@@ -9,6 +10,8 @@ import {Episode} from './Episode'
 import { User } from './Users';
 
 import {Favorite} from './Favorite'
+
+import {WatchTime} from './WatchTime'
 
 
 //Criando uma associação com várias tabelas, utilizamos os comandos belongsTo para dizer que está saindo algum elemento de uma e indo para outra. E, o comando hasMany, para refereciar o recebimento dessa coluna.
@@ -44,7 +47,11 @@ User.belongsToMany(Course, {through: Favorite})
 Course.belongsToMany(User, {through: Like})
 User.belongsToMany(Course, {through: Like})
 
+// --//
+
+User.belongsToMany(Episode, {through:WatchTime})
+Episode.belongsToMany(User, {through:WatchTime})
 
 export {
-    Category, Course, Episode, User, Favorite, Like
+    Category, Course, Episode, User, Favorite, Like, WatchTime
 }
