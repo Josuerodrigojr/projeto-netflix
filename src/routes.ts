@@ -55,6 +55,7 @@ router.get('/episodes/:id/watchTime', ensureAuth, episodesController.getWatchTim
 router.post('/episodes/:id/watchTime', ensureAuth, episodesController.setWatchTime)
 
 //Rota do usuário 
+router.get('/users/current', ensureAuth, usersController.show)
 router.get('/users/current/watching', ensureAuth, usersController.watching)
 
 export {router}
