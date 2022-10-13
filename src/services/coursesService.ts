@@ -1,5 +1,4 @@
 import { Op } from 'sequelize'
-import { getPaginationParams } from '../helpers/getPaginationParams'
 import {Course} from '../models'
 
 export const courseService ={

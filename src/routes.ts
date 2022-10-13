@@ -1,3 +1,4 @@
+import { usersController } from './controllers/usersController';
 import { likeController } from './controllers/likesController';
 import { favoritesController } from './controllers/favoritesController';
 import { authController } from './controllers/authController';
@@ -53,5 +54,7 @@ router.delete('/likes/:id', ensureAuth, likeController.delete)
 router.get('/episodes/:id/watchTime', ensureAuth, episodesController.getWatchTime)
 router.post('/episodes/:id/watchTime', ensureAuth, episodesController.setWatchTime)
 
+//Rota do usuário 
+router.get('/users/current/watching', ensureAuth, usersController.watching)
 
 export {router}

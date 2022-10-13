@@ -1,3 +1,4 @@
+import { WatchTime, WatchTimeInstance } from './WatchTime';
 import { DataTypes } from 'sequelize';
 import { sequelize } from './../index';
 import { Model } from 'sequelize';
@@ -19,7 +20,9 @@ export interface Episode{
 export interface EpisodeCreationAttributes extends Optional <Episode, 'id' | 'videoUrl' | 'secondsLong'>{ }
 
 //Criando uma classe que irá pegar as configurações de Model, Category e CategoryCreationAttributes
-export interface EpisodeInstance extends Model <Episode, EpisodeCreationAttributes>, Episode { }
+export interface EpisodeInstance extends Model <Episode, EpisodeCreationAttributes>, Episode {
+  watchTime?: WatchTimeInstance
+ }
 
 
 //O define vai criar o método dentro da minha aplicação, definindo o tipo de cada coluna.

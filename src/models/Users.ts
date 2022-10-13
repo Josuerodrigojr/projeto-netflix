@@ -1,3 +1,4 @@
+import { EpisodeInstance } from './Episode';
 import { sequelize } from './../index';
 import { Model, Optional, DataTypes } from "sequelize"
 import bcrypt from 'bcrypt'
@@ -24,6 +25,7 @@ export interface UserCreationAttributes extends Optional <User, 'id'>{ }
 //Criando uma classe que irá pegar as configurações de Model, User e UserCreationAttributes
 // Temos que colocar que a instncia irá receber a verificação da senha
 export interface UserInstance extends Model <User, UserCreationAttributes>, User { 
+  Episodes?:EpisodeInstance[]
   checkPassword: (password:string, callbackfn: CheckPasswordCallback) => void
 }
 
