@@ -68,6 +68,14 @@ export const userService = {
         
     },
 
+    //individualHooks, vai rodar os hooks se são verdadeiros ou falso, para senha precisamos passar por conta da criptografia.
+    updatePassword: async(id:number, password:string) =>{
+        const [affectedRows, updatedUsers] = await User.update({password}, {where:{id}, returning: true, individualHooks: true})
+        return updatedUsers[0]
+
+
+    },
+
     //Obtendo a lista de continuar do usuário
     getKeepWatchingList: async(id:number) => {
         const userWithWatchingEpisodes = await User.findByPk(id, {

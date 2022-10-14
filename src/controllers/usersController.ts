@@ -39,6 +39,29 @@ export const usersController = {
         
     },
 
+    //PUT/users/current/password
+
+    updatePassword: async(req: AuthenticatedRequest, res: Response) =>{
+        const user = req.user!
+        const {currentPassword, newPassword} = req.body
+
+        try{
+            user.checkPassword(currentPassword, async(err, iSame)=>{
+                if (err) throw err
+                if(!iSame) throw new Error("Senha incorreta")
+
+                await userService.updatePassword(user.id, newPassword)
+                return res.status(204).send()
+            })
+
+        } catch(err){
+            if (err instanceof Error) {
+                return res.status(400).json({ message: err.message })
+              }
+        }
+
+    },
+
     //GET/users/current/watching
     //O authenticatedRequest será usado somente quando a rota precisar de autenticação para ser usada.
     watching: async(req:AuthenticatedRequest, res: Response) => {
