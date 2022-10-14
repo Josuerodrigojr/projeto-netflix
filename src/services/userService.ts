@@ -51,6 +51,23 @@ export const userService = {
         return user
     },
 
+    //Para que possamos atualizar os dados do usuário, exceto a senha. Vamos passar para o programa que precisamos do id do usuário, e podem alterar na parte de attributes.
+
+    update: async (id: number, attributes: {
+    firstName: string
+    lastName: string
+    phone: string
+    birth: Date
+    email: string
+  }) => {
+        //Vamos armazenar em duas váriaveis, a primeira irá armazenar as linhas que foram afetadas e a segunda irá armazenar o que foi alterado, como no nosso caso somente uma linha vai ser alterada, então, retornamos somente uma linha.
+        //Vamos passar primeiro para o prgrama, dentro do parenteses de update, quais são os valores que queremos alterar, e logo depois temos que indicar onde será feito essas alterações. No caso do exemplo abaixo, queremos alterar o que passamos como attributes e além disso, vamos alterar somente onde o id for igual a do usuário logado. Por último, algo que só podemos usar com o postgred, um returning, para que retorne para o usuários as alterações que foram feitas.
+        const [affectedRows, updatedUsers] = await User.update(attributes, { where: { id }, returning: true })
+
+         return updatedUsers[0]
+        
+    },
+
     //Obtendo a lista de continuar do usuário
     getKeepWatchingList: async(id:number) => {
         const userWithWatchingEpisodes = await User.findByPk(id, {
