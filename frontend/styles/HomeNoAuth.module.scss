@@ -1,0 +1,11 @@
+
+//Papel de parede de nossa aplicação.
+
+//Alterações: Um papel de parede, que vai ser gradiente, sumindo no decorrer que podemos ver a imagem, ocorrendo essa modificação para baixo e indo de preto para cinza. Posicionando a imagem, ajustando para que a imagem caiba dentro da janela de navegação e depois colocando para que não ocorra repetição da imagem no decorrer da janela.
+
+.sectionBackground{
+    background-image: linear-gradient(to bottom, #8b8b8b1a, #151515), url('../public/homeNoAuth/backgroundPresentationSection.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

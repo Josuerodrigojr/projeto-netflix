@@ -1,0 +1,123 @@
+@import '../../../../styles/colors.module.scss';
+
+//O subtitulo dos meus parágrafos.
+//Alterações: Configuramos o tamanho da letra, colocamos em negrito e a cor do texto em veremlha. 
+
+.subTitle{
+    font-size: 18px;
+    font-weight: bold;
+    color: $lightRed;
+
+}
+
+//O titulo de meu paragrafo.
+//Alterações: Ajustamos o tamanho da letra para que seja maior que o subtitulo, colocamos em negrito e ajustamos a altura entre as linhas.
+
+.title{
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 50px;
+
+}
+
+//A descrição do nosso curso. 
+//Alterações: Ajustamos o tamanho da letra e a cor da fonte. Depois, criamos um espaço na margin no topo, esquerda, direita e na parte de baixo.
+
+.description{
+    font-size: 20px;
+    color: $lightGray;
+    margin: 20px 0px 40px 0px;
+
+}
+
+//A configuração do botão da nossa página.
+//Alterações: Ajustamos a letra para negrito e da cor branca. Colocamos o display flex, para que fique orientado como linha e centralizamos no eixo y no centro do nosso botão, logo depois, colocamos um distanciamento entre os itens de 25px. Um distanciamento entre as bordas de 14px e 30 px e alteramos nossa borda. No hover, configuramos como o botão deve se comportar depois que o mouse passa por cima dele. Após isso, configuramos a imagem dentro do botão, alterando somente o tamanho.
+.btnCta{
+
+    font-weight: bold;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 14px 30px;
+    border: 2px solid $lightRed;
+    &:hover{
+        border-color: $darkRed;
+        color: $lightGray;
+        background-color: transparent;
+    }
+
+//A configuração de nossa imagem dentro do botão
+
+.btnImg{
+    width: 15px;
+}
+
+}
+
+
+
+//Configuração da segunda imagem
+//Alterações: Ajustamos o tamanho da imagem  
+
+.imgPresentation{
+ width: 550px;   
+}
+
+
+//Imagem da seta para baixo
+
+.arrowDown{
+    width: 30px;
+}
+
+//Ajustando a responsividade
+
+@media (max-width:1199px)and (min-width:991px){
+
+    .title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .description{
+        font-size: 14px;
+    }
+}
+
+
+
+@media (max-width:991px){
+    .imgPresentation{
+        display: flex;
+        margin: 50px auto;
+    }
+}
+
+@media (max-width: 590px){
+    .imgPresentation{
+        width: 95%;
+    }
+    .title{
+        font-size: 26px;
+        line-height: 34px;
+    }
+    .description{
+        font-size: 14px;
+    }
+    .btnCta{
+        padding: 10px 24px;
+    }
+}
+
+@media (max-width:359px){
+    .subTitle{
+        font-size: 14px;
+    }
+    .title{
+        font-size: 20px;
+    }
+    .description{
+        font-size: 12px;
+    }
+}

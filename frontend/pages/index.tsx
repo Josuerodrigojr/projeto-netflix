@@ -2,6 +2,7 @@
 
  import Head from 'next/head'
 import HeaderNoAuth from '../src/components/homeNoAuth/headerNoAuth';
+import PresentationSection from '../src/components/homeNoAuth/presentationSection';
  import styles from '../styles/HomeNoAuth.module.scss';
 
  //Na estrutura do react, criamos um Head, em que será o cabeça~lho da nossa estrutura, além disso, colocamos uma tag main, em que estará o corpo da nossa estrutura.
@@ -17,7 +18,10 @@ import HeaderNoAuth from '../src/components/homeNoAuth/headerNoAuth';
     </Head>
 
     <main>
+      <div className={styles.sectionBackground}>
       <HeaderNoAuth/>
+      <PresentationSection/>
+      </div>
     </main>
     </>
   )
