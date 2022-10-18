@@ -17,7 +17,7 @@ export interface CategoryInstance extends Model <Category, CategoryCreationAttri
 
 
 //O define vai criar o método dentro da minha aplicação, definindo o tipo de cada coluna.
-export const Category = sequelize.define<CategoryInstance, Category>('Category',{
+export const Category = sequelize.define<CategoryInstance, Category>('categories',{
             id:{
           allowNull: false,
           autoIncrement: true,

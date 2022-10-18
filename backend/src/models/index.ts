@@ -16,7 +16,7 @@ import {WatchTime} from './WatchTime'
 
 //Criando uma associação com várias tabelas, utilizamos os comandos belongsTo para dizer que está saindo algum elemento de uma e indo para outra. E, o comando hasMany, para refereciar o recebimento dessa coluna.
 
-Category.hasMany(Course, {as:'courses'})
+Category.hasMany(Course)
 
 Course.belongsTo(Category)
 

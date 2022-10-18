@@ -5,7 +5,6 @@ import uploadFileFeature from '@adminjs/upload'
 import path from 'path'
 
 
-
 export const courseResourceOptions: ResourceOptions = {
   navigation: 'Catálogo',
   editProperties: ['name', 'synopsis', 'uploadThumbnail', 'featured', 'categoryId'],
@@ -13,7 +12,6 @@ export const courseResourceOptions: ResourceOptions = {
   listProperties: ['id', 'name', 'featured', 'categoryId'],
   showProperties: ['id', 'name', 'synopsis', 'featured', 'thumbnailUrl', 'categoryId', 'createdAt', 'updatedAt']
 }
-
 //Para fazer o upload das capas dos videos
 
 export const courseResourceFeatures: FeatureType[] = [

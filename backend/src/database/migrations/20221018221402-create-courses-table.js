@@ -10,12 +10,12 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER
       },
       name: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DataTypes.STRING
       },
       synopsis: {
         allowNull: false,
-        type: Sequelize.DataTypes.TEXT
+        type: Sequelize.DataTypes.STRING
       },
       thumbnail_url: {
         type: Sequelize.DataTypes.STRING

@@ -20,7 +20,7 @@ export const adminJsResources: ResourceWithOptions[] = [
         resource: Course,
         options: courseResourceOptions,
         features: courseResourceFeatures
-    },
+      },
     {
         resource: Episode,
         options: episodeResourceOptions,
