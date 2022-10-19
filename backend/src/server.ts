@@ -7,7 +7,7 @@ import {router} from './routes'
 
 const app = express()
 // Para fazer com que tudo dentro de uma pasta seja arquivos estáticos
-app.use(express.static('../public'))
+app.use(express.static('public'));
 //Indicando que podemos mandar para o programa o formato json
 app.use(express.json())
 //Para que a apalicação utilize as rotas já definidas.
