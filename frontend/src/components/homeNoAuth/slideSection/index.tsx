@@ -12,7 +12,7 @@ interface props {
 const SlideSection = function ({newestCourses}:props){
     //Primeiro vamos definir para que sempre seja atualizado, pesquisando no backend depois de um determinado tempo.
     return <>
-    <Container>
+    <Container className="d-flex flex-column align-items-center py-5">
         <p className={styles.sectionTitle}>Aulas já disponíveis</p>
         <SlideComponent course={newestCourses}/>
         <Link href='/'><Button outline color='light' className={styles.slideSectionBtn}>Se cadastre para acessar os cursos</Button></Link>

@@ -1,0 +1,63 @@
+
+
+@import '../../../../styles/colors.module.scss';
+
+//Configurando a div com os slides
+//Alterações: Primeiro é definido o tamanho de cada imagem no slide. Depois é definido uma borda para a divisão dos slides. Após isso, é definido o cursor como pointer, para indicar a nossa web que é algo clicável. O overflow e o text overflow é para indicar quando devemos cortar o texto, no caso da aplicação é quando passar da limitação do slide. Transition é para que qualquer animação, demore 0.4 segundos para que aconteça. O ohover é o que acontece quando passa o mouse em cima do slide, tendo o nosso aumento no conteudo do slide e alteração na cor da borda.
+
+.slide{
+width: 280px;
+height: 350px;
+border: 1px solid $darkGray;
+cursor: pointer;
+overflow: hidden;
+text-overflow: clip;
+transition: 0.2s;
+margin-left: 12px;
+
+&:hover{
+    border-color: $lightRed;
+    height: 370px;
+}
+}
+//Configurando as imagens
+//Alterações:Somente o tamanho das imagens
+.slideImg{
+    width: 100%;
+    height: 170px;
+}
+
+//Alterando o titulo do slide
+// Alterações: Somente a cor da letra, deixar em negrito e um distanciamento da sinopse.
+.slideTitle{
+    color:white;
+    font-weight: bold;
+    padding: 8px 16px;
+}
+//A sinopse de cada video
+// Atualização: Alteração no tamanho da letra, distanciamente e alteração da cor.
+
+.slideDescription{
+    font-size: 14px;
+    padding: 8px 16px;
+    color: #ccc8c8;
+}
+
+@media(max-width: 1200px){
+    .slide{
+        margin-left: 11px;
+    }
+}
+
+@media(max-width: 600px){
+    .slide{
+        margin-left: 11px;
+    }
+}
+
+@media(max-width: 300px){
+    .slide{
+        width: 100%;
+        margin-left: 0px;
+    }
+}
