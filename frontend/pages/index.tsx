@@ -9,6 +9,7 @@ import courseService from '../src/services/courseService';
  import styles from '../styles/HomeNoAuth.module.scss';
  import {ReactNode} from 'react'
 import {CourseType} from '../src/services/courseService'
+import Footer from '../src/components/common/footer';
 
 
  interface IndexPageProps {
@@ -32,7 +33,9 @@ import {CourseType} from '../src/services/courseService'
       <PresentationSection/>
       </div>
       <SlideSection newestCourses={course}/>
+      <Footer/>
     </main>
+
     </>
   )
  }
